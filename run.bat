@@ -1,4 +1,4 @@
-锘緻echo off
+@echo off
 title [Chinese programming]
 
 ChineseToPinYin_Release
@@ -11,9 +11,9 @@ echo Runing...
 output
 
 @echo off
-rem 鍒犻櫎涓棿鏂囦欢
+rem 删除中间文件
 del PinYinToEnglish.c
 del ChineseToPinYin.c
 rem del output.exe
-rem 绛夊緟鍥炶溅
+rem 等待回车
 pause
