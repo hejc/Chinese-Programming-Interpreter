@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <string.h>
 #include<stdlib.h>
 
@@ -6,9 +6,9 @@ void StrInsert(char *str, char *str_ins);
 char* substring(char* ch, int pos, int length);
 void character_Append(char *str, char ch);
 
-unsigned int flag_3 = 0;//³öÏÖzhengxing zhu() µÄg×ÖÄ¸¶ªÊ§£¬ÁÙÊ±½â¾ö°ì·¨
-unsigned int flag_4 = 0;//³öÏÖzhengxing zhu()µÄ¡° ¡±¿Õ¸ñ±»±£Áô£¬ÁÙÊ±½â¾ö°ì·¨
-unsigned int flag_switch = 1; //flag_3ºÍflag_4µÄ×Ü¿ª¹Ø
+unsigned int flag_3 = 0;//å‡ºç°zhengxing zhu() çš„gå­—æ¯ä¸¢å¤±ï¼Œä¸´æ—¶è§£å†³åŠæ³•
+unsigned int flag_4 = 0;//å‡ºç°zhengxing zhu()çš„â€œ â€ç©ºæ ¼è¢«ä¿ç•™ï¼Œä¸´æ—¶è§£å†³åŠæ³•
+unsigned int flag_switch = 1; //flag_3å’Œflag_4çš„æ€»å¼€å…³
 int main()
 {
 	FILE *fp;
@@ -19,10 +19,10 @@ int main()
 	int i, j;
 	unsigned int count = 0, flag_1 = 1,flag_2 = 0;
 	fp = fopen("ChineseToPinYin.c", "r");
-	remove("PinYinToEnglish.c");	//É¾³ıtest_1.txtÎÄ¼ş
+	remove("PinYinToEnglish.c");	//åˆ é™¤test_1.txtæ–‡ä»¶
 	FILE *fp_1 = fopen("PinYinToEnglish.c", "w+");
 
-	//²âÊÔ´úÂë
+	//æµ‹è¯•ä»£ç 
 	//char test_1[255] = "return 0;";
 
 	while (!feof(fp))
@@ -30,7 +30,7 @@ int main()
 		memset(buff, 0, sizeof(buff));
 		memset(str_temp, 0, sizeof(str_temp));
 		fgets(buff, sizeof(buff), fp);
-		//²âÊÔ´úÂë
+		//æµ‹è¯•ä»£ç 
 		//strcpy(buff, test_1);
 
 		for (i = 0; i < strlen(buff); i++)
@@ -51,11 +51,11 @@ int main()
 				}
 				if (flag_switch == 1)
 				{
-					if (buff[i + 1] == ' ')//³öÏÖzhengxing zhu() µÄg×ÖÄ¸¶ªÊ§£¬ÁÙÊ±½â¾ö°ì·¨
+					if (buff[i + 1] == ' ')//å‡ºç°zhengxing zhu() çš„gå­—æ¯ä¸¢å¤±ï¼Œä¸´æ—¶è§£å†³åŠæ³•
 					{
 						flag_3 = 1;
 					}
-					if (buff[i - 1] == ' ')//³öÏÖzhengxing zhu()µÄ¡° ¡±¿Õ¸ñ±»±£Áô£¬ÁÙÊ±½â¾ö°ì·¨
+					if (buff[i - 1] == ' ')//å‡ºç°zhengxing zhu()çš„â€œ â€ç©ºæ ¼è¢«ä¿ç•™ï¼Œä¸´æ—¶è§£å†³åŠæ³•
 					{
 						flag_4 = 1;
 					}
@@ -100,8 +100,8 @@ int main()
 				flag_1 = 1;
 				if (flag_switch == 1)
 				{
-					flag_3 = 0;//³öÏÖzhengxing zhu() µÄg×ÖÄ¸¶ªÊ§£¬ÁÙÊ±½â¾ö°ì·¨
-					flag_4 = 0;//³öÏÖzhengxing zhu()µÄ¡° ¡±¿Õ¸ñ±»±£Áô£¬ÁÙÊ±½â¾ö°ì·¨
+					flag_3 = 0;//å‡ºç°zhengxing zhu() çš„gå­—æ¯ä¸¢å¤±ï¼Œä¸´æ—¶è§£å†³åŠæ³•
+					flag_4 = 0;//å‡ºç°zhengxing zhu()çš„â€œ â€ç©ºæ ¼è¢«ä¿ç•™ï¼Œä¸´æ—¶è§£å†³åŠæ³•
 				}
 				count = 0;
 				//flag_2 = 1;
@@ -119,7 +119,7 @@ int main()
 			}
 
 			
-			//Ğ´Èë¼Ó¸öÅĞ¶ÏÈçÊÇÉÏ´ÎÄÚÈİÔò²»Ö´ĞĞ¸ÃÓï¾ä
+			//å†™å…¥åŠ ä¸ªåˆ¤æ–­å¦‚æ˜¯ä¸Šæ¬¡å†…å®¹åˆ™ä¸æ‰§è¡Œè¯¥è¯­å¥
 			if (i==strlen(buff)-1)
 			{
 				fprintf(fp_1, str_temp);
@@ -136,26 +136,26 @@ char* substring(char* ch, int pos, int length)
 {
 	if (flag_switch == 1)
 	{
-		if (flag_3 == 1)//³öÏÖzhengxing zhu() µÄg×ÖÄ¸¶ªÊ§£¬ÁÙÊ±½â¾ö°ì·¨
+		if (flag_3 == 1)//å‡ºç°zhengxing zhu() çš„gå­—æ¯ä¸¢å¤±ï¼Œä¸´æ—¶è§£å†³åŠæ³•
 		{
 			length++;
 		}
-		if (flag_4 == 1)//³öÏÖzhengxing zhu()µÄ¡° ¡±¿Õ¸ñ±»±£Áô£¬ÁÙÊ±½â¾ö°ì·¨
+		if (flag_4 == 1)//å‡ºç°zhengxing zhu()çš„â€œ â€ç©ºæ ¼è¢«ä¿ç•™ï¼Œä¸´æ—¶è§£å†³åŠæ³•
 		{
 			pos++;
 		}
 	}
-	char* pch = ch;//¶¨ÒåÒ»¸ö×Ö·ûÖ¸Õë£¬Ö¸Ïò´«µİ½øÀ´µÄchµØÖ·¡£
-	char* subch = (char*)calloc(sizeof(char), length + 1);//Í¨¹ıcallocÀ´·ÖÅäÒ»¸ölength³¤¶ÈµÄ×Ö·ûÊı×é£¬·µ»ØµÄÊÇ×Ö·ûÖ¸Õë¡£
-	int i;//Ö»ÓĞÔÚC99ÏÂforÑ­»·ÖĞ²Å¿ÉÒÔÉùÃ÷±äÁ¿£¬ÕâÀïĞ´ÔÚÍâÃæ£¬Ìá¸ß¼æÈİĞÔ¡£
-	pch = pch + pos;//ÊÇpchÖ¸ÕëÖ¸ÏòposÎ»ÖÃ¡£
+	char* pch = ch;//å®šä¹‰ä¸€ä¸ªå­—ç¬¦æŒ‡é’ˆï¼ŒæŒ‡å‘ä¼ é€’è¿›æ¥çš„chåœ°å€ã€‚
+	char* subch = (char*)calloc(sizeof(char), length + 1);//é€šè¿‡callocæ¥åˆ†é…ä¸€ä¸ªlengthé•¿åº¦çš„å­—ç¬¦æ•°ç»„ï¼Œè¿”å›çš„æ˜¯å­—ç¬¦æŒ‡é’ˆã€‚
+	int i;//åªæœ‰åœ¨C99ä¸‹forå¾ªç¯ä¸­æ‰å¯ä»¥å£°æ˜å˜é‡ï¼Œè¿™é‡Œå†™åœ¨å¤–é¢ï¼Œæé«˜å…¼å®¹æ€§ã€‚
+	pch = pch + pos;//æ˜¯pchæŒ‡é’ˆæŒ‡å‘posä½ç½®ã€‚
 	for (i = 0; i<(length-pos+1); i++)
 	{
-		//subch[i] = *(pch);//Ñ­»·±éÀú¸³ÖµÊı×é¡£g²»ÄÜ±»¸³ÓèÖµ¹ıÈ¥
+		//subch[i] = *(pch);//å¾ªç¯éå†èµ‹å€¼æ•°ç»„ã€‚gä¸èƒ½è¢«èµ‹äºˆå€¼è¿‡å»
 		*(subch + i) = *(pch++);
 	}
-	subch[length] = '\0';//¼ÓÉÏ×Ö·û´®½áÊø·û¡£
-	return subch;       //·µ»Ø·ÖÅäµÄ×Ö·ûÊı×éµØÖ·¡£
+	subch[length] = '\0';//åŠ ä¸Šå­—ç¬¦ä¸²ç»“æŸç¬¦ã€‚
+	return subch;       //è¿”å›åˆ†é…çš„å­—ç¬¦æ•°ç»„åœ°å€ã€‚
 }
 
 void character_Append(char *str, char ch)
@@ -163,6 +163,6 @@ void character_Append(char *str, char ch)
 	int length = strlen(str);
 	//	printf("%d\n",length);
 	*(str + length) = ch;
-	str[length + 2] = '\0';//¼ÓÉÏ×Ö·û´®½áÊø·û¡£
+	str[length + 2] = '\0';//åŠ ä¸Šå­—ç¬¦ä¸²ç»“æŸç¬¦ã€‚
 }
 

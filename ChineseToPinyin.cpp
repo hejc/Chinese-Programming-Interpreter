@@ -1,4 +1,4 @@
-#include <iostream>  
+ï»¿#include <iostream>  
 #include <fstream>
 #include <string>
 using namespace std;
@@ -34,7 +34,7 @@ int ChineseConvertPy(const std::string& dest_chinese, std::string& out_py)
 		-10329, -10328, -10322, -10315, -10309, -10307, -10296, -10281, -10274, -10270, -10262, -10260, -10256, -10254 
 	};
 
-	// 395¸ö×Ö·û´®£¬Ã¿¸ö×Ö·û´®³¤¶È²»³¬¹ı6  
+	// 395ä¸ªå­—ç¬¦ä¸²ï¼Œæ¯ä¸ªå­—ç¬¦ä¸²é•¿åº¦ä¸è¶…è¿‡6  
 	const char spell_dict[396][7] = 
 	{ 
 		"a", "ai", "an", "ang", "ao", "ba", "bai", "ban", "bang", "bao", "bei", "ben", "beng", "bi", "bian", "biao",
@@ -63,41 +63,41 @@ int ChineseConvertPy(const std::string& dest_chinese, std::string& out_py)
 	};
 
 	try {
-		// Ñ­»·´¦Àí×Ö½ÚÊı×é  
+		// å¾ªç¯å¤„ç†å­—èŠ‚æ•°ç»„  
 		const int length = dest_chinese.length();
 		for (int j = 0, chrasc = 0; j < length;) 
 		{
-			// ·Çºº×Ö´¦Àí  
+			// éæ±‰å­—å¤„ç†  
 			if (dest_chinese.at(j) >= 0 && dest_chinese.at(j) < 128) 
 			{
 				out_py += dest_chinese.at(j);
-				// Æ«ÒÆÏÂ±ê  
+				// åç§»ä¸‹æ ‡  
 				j++;
 				continue;
 			}
 
-			// ºº×Ö´¦Àí  
+			// æ±‰å­—å¤„ç†  
 			chrasc = dest_chinese.at(j) * 256 + dest_chinese.at(j + 1) + 256;
 			if (chrasc > 0 && chrasc < 160) 
 			{
-				// ·Çºº×Ö  
+				// éæ±‰å­—  
 				out_py += dest_chinese.at(j);
-				// Æ«ÒÆÏÂ±ê  
+				// åç§»ä¸‹æ ‡  
 				j++;
 			}
 			else 
 			{
-				// ºº×Ö  
+				// æ±‰å­—  
 				for (int i = (sizeof(spell_value) / sizeof(spell_value[0]) - 1); i >= 0; --i) 
 				{
-					// ²éÕÒ×Öµä  
+					// æŸ¥æ‰¾å­—å…¸  
 					if (spell_value[i] <= chrasc) 
 					{
 						out_py += spell_dict[i];
 						break;
 					}
 				}
-				// Æ«ÒÆÏÂ±ê £¨ºº×ÖË«×Ö½Ú£©  
+				// åç§»ä¸‹æ ‡ ï¼ˆæ±‰å­—åŒå­—èŠ‚ï¼‰  
 				j += 2;
 			}
 		} // for end  
@@ -118,16 +118,16 @@ int main()
 	string filename;
 	string line;
 
-	if (in) // ÓĞ¸ÃÎÄ¼ş
+	if (in) // æœ‰è¯¥æ–‡ä»¶
 	{
-		while (getline(in, line)) // lineÖĞ²»°üÀ¨Ã¿ĞĞµÄ»»ĞĞ·û
+		while (getline(in, line)) // lineä¸­ä¸åŒ…æ‹¬æ¯è¡Œçš„æ¢è¡Œç¬¦
 		{
 			std::string chang_query;
 			ChineseConvertPy(line, chang_query);
-			out << chang_query.c_str() << endl; // ÊäÈëµ½2.txtÖĞ
+			out << chang_query.c_str() << endl; // è¾“å…¥åˆ°2.txtä¸­
 		}
 	}
-	else // Ã»ÓĞ¸ÃÎÄ¼ş
+	else // æ²¡æœ‰è¯¥æ–‡ä»¶
 	{
 		cout << "no such file" << endl;
 	}
